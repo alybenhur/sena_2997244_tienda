@@ -9,7 +9,7 @@
             
           
               <v-img
-                height="250"
+                height="100"
                 :src="datos.imagen"
                 contain
               ></v-img>
@@ -18,24 +18,12 @@
 
                 <v-card-title>{{datos.titulo}}</v-card-title>
           
-                <v-card-subtitle>
-                  
-          
-                  <v-icon
-                    color="error"
-                    icon="mdi-fire-circle"
-                    size="small"
-                  ></v-icon>
-                </v-card-subtitle>
+                
 
               </v-card-item>
           
               <v-card-text>
-             
-              
-             
-          
-                <div>{{datos.descripcion}}</div>
+               {{datos.descripcion}}
               </v-card-text>
           
               <v-divider class="mx-4 mb-1"></v-divider>
