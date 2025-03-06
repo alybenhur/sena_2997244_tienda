@@ -34,6 +34,7 @@
           
               <v-card-actions>
                 <v-btn
+                @click="compra()"
                 append-icon="mdi-cart-outline"
                 size="large"
                 block
@@ -57,7 +58,20 @@
       
 </template>
 <script>
+import { useTiendaStore } from '@/stores/index';
 export default {
-    props : ['datos','alto']
+    props : ['datos','alto','pos'],
+    methods: {
+      compra(){
+       let producto = this.TiendaStore.GetProductoId(this.pos)
+       this.TiendaStore.guardarProducto(producto)
+      }
+    },
+    computed: {
+    // Definimos el store como una propiedad computada para acceder a él
+    TiendaStore() {
+      return useTiendaStore();
+    },
+  },
 }
 </script>
