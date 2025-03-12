@@ -64,7 +64,21 @@ export default {
     methods: {
       compra(){
        let producto = this.TiendaStore.GetProductoId(this.pos)
-       this.TiendaStore.guardarProducto(producto)
+   
+       if (this.TiendaStore.GetExisteProductoId(producto.codigo) == undefined)
+        {
+         producto.cantidad = 1
+         this.TiendaStore.guardarProducto(producto)
+         }
+       else
+        {
+          let pos = this.TiendaStore.GetExisteProductoId(producto.codigo)
+          console.log(pos)
+          producto.cantidad += 1
+          this.TiendaStore.sobreescribirproducto(pos,producto)
+
+        }
+       
       }
     },
     computed: {
