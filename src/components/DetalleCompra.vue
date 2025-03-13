@@ -15,7 +15,29 @@
            :headers="headers"
            :items="items"
           >
-          
+          <template v-slot:item="{ item }">
+            <tr>
+              <td>
+                {{item.titulo}}
+              </td>
+              <td>
+                <v-img
+                 height="50"
+                 :src="item.imagen"
+            ></v-img>
+              </td>
+              <td>
+                {{ item.valor }}
+              </td>
+              <td>
+                <ContadorCompra
+                 :cantidad ="item.cantidad"
+                 :codigo="item.codigo"></ContadorCompra>
+              </td>
+            </tr>
+          </template>
+
+
         </v-data-table>
 
           <template v-slot:actions>
@@ -29,8 +51,13 @@
     </div>
   </template>
   <script>
+  
   import { useTiendaStore } from '@/stores/index';
+  import ContadorCompra from '@/components/ContadorCompra.vue';
   export default {
+    components:{
+      ContadorCompra
+    },
     props : {
         dialog : {
           type: Boolean,

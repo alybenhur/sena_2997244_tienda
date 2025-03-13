@@ -114,7 +114,19 @@ export const useTiendaStore = defineStore('tienda', {
     },
     sobreescribirproducto(pos,producto){
      this.compras[pos] = producto
-    }
+    },
+
+    incrementarcantidad(codigo){
+     let producto =  this.compras.find((e) => e.codigo == codigo)
+     producto.cantidad += 1
+    
+    },
+    decrementarcantidad(codigo){
+      let producto =  this.compras.find((e) => e.codigo == codigo)
+      if (producto.cantidad > 1)
+         producto.cantidad -= 1
+     
+     }
   }
   // Actions
  
